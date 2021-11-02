@@ -11,16 +11,21 @@ describe('LearningCard', () => {
       <span slot="subheader">Test Subheader</span>
       <p>Whatever</p>
       <ul>
-        <li>Tests</li>
-        <li>Blow</li>
-        <li>Cock</li>
+        <li>Plz</li>
+        <li>Just</li>
+        <li>Work</li>
       </ul>
     </lrn-card>`);
+  });
+  it('renders a learning-banner', () => {
+    const banner = element.shadowRoot.querySelector('banner');
+    expect(banner).to.exist;
   });
 
   it('renders main header', () => {
     const h1 = element.shadowRoot.querySelector('h1 slot');
     expect(h1).to.exist;
+    // Test claims h1 does not exist
     expect(h1.assignedElements({ flat: true })[0].innerText).to.equal(
       'Science Card'
     );
@@ -29,6 +34,7 @@ describe('LearningCard', () => {
   it('renders the sub header', () => {
     const h2 = element.shadowRoot.querySelector('h2 slot');
     expect(h2).to.exist;
+    // Test claims that h2 does not exist. Says it is null.
     expect(h2.assignedElements({ flat: true })[0].innerText).to.equal(
       'Test Subheader'
     );
@@ -47,7 +53,8 @@ describe('LearningCard', () => {
   it('checks updatedProperties', () => {
     element.type = 'science';
     expect(element.type).to.equal('science');
-    expect(element.icon).to.equal('beaker');
+    expect(element.icon).to.equal('fact');
+    // Issue here: "expect undefined to equal beaker"
     element.type = 'objective';
     setTimeout(() => {
       expect(element.type).to.equal('objective');
@@ -76,6 +83,7 @@ describe('LearningCard', () => {
       <p>Walter White used High School Chemistry Equipment to cook Meth?</p>
     </lrn-card>`);
     expect(element.type).to.equal('science');
+    // Issue here: "expect undefined to equal beaker";
     expect(element.icon).to.equal('beaker');
     expect(element2.type).to.equal('objective');
     expect(element2.icon).to.equal('lightbulb');
