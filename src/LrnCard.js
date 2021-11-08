@@ -1,8 +1,5 @@
 import { html, css } from 'lit';
 import { SimpleColors } from '@lrnwebcomponents/simple-colors/simple-colors.js';
-import './LearningCardBanner.js';
-import './LearningIcon.js';
-import './LearningScaffold.js';
 
 export class LrnCard extends SimpleColors {
   static get tag() {
@@ -76,7 +73,6 @@ export class LrnCard extends SimpleColors {
 
         summary {
           list-style-position: inside;
-          list-style-image: url('../assets/beaker.svg');
           display: flex;
         }
 
@@ -124,39 +120,26 @@ export class LrnCard extends SimpleColors {
   render() {
     return html`
       <div id="cardFrame">
-        <details>
+        <details open>
           <summary part="banner">
             <div
               class="slot-wrapper"
               data-label="header"
               data-layout-slotname="header"
             >
-              <lrn-card-banner
-                type="${this.type}"
-              >
-              </lrn-card-banner>
+              <lrn-card-banner type="${this.type}"> </lrn-card-banner>
             </div>
-            <learning-card-banner
-              type="${this.type}"
-            >
-            <div 
-            class="thesubheader"
-            data-label="thesubheader"
-            >
-            <div class= "larger" slot="header">${this.mainheader}</div>
-              <slot class= "smaller" name="thesubheader">${this.subheader}
-            </slot>
-
-            </slot>
-
-            </slot>
-             </div>
-              
+            <learning-card-banner type="${this.type}">
+              <div class="thesubheader" data-label="thesubheader">
+                <div class="larger" slot="header">${this.mainheader}</div>
+                <slot class="smaller" name="thesubheader"
+                  >${this.subheader}
+                </slot>
+              </div>
             </learning-card-banner>
           </summary>
           <div id="drawerContents">
-          <slot>
-          </slot>
+            <slot> </slot>
           </div>
         </details>
       </div>

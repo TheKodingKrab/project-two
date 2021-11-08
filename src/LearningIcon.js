@@ -11,16 +11,18 @@ export class LearningIcon extends SimpleColors {
   }
 
   updated(changedProperties) {
-    super.updated(changedProperties);
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === 'type' && this[propName] === 'science') {
-        this.myIcon = beaker;
+        this.icon = beaker;
       }
       if (propName === 'type' && this[propName] === 'objective') {
-        this.myIcon = lightbulb;
+        this.icon = lightbulb;
       }
       if (propName === 'type' && this[propName] === 'fact') {
-        this.myIcon = question;
+        this.icon = question;
       }
       if (propName === 'iconHeight') {
         this.style.setProperty('--icon-height', this.iconHeight);
@@ -34,7 +36,7 @@ export class LearningIcon extends SimpleColors {
     this.type = null;
     this.iconHeight = 'inherit';
     this.iconWidth = 'inherit';
-    this.myIcon = null;
+    this.icon = null;
     this.dark = false;
     this.accentColor = 'blue';
   }
@@ -43,7 +45,7 @@ export class LearningIcon extends SimpleColors {
     return {
       ...super.properties,
       type: { type: String, reflect: true },
-      myIcon: { type: String },
+      icon: { type: String },
       iconHeight: { type: String, attribute: 'icon-height', reflect: true },
       iconWidth: { type: String, attribute: 'icon-width', reflect: true },
     };
@@ -90,10 +92,11 @@ export class LearningIcon extends SimpleColors {
         <img
           part="icon"
           id="learning-icon"
-          .src="${this.myIcon}"
+          .src="${this.icon}"
           alt="learning card ${this.type} icon"
         />
       </div>
     `;
   }
 }
+customElements.define(LearningIcon.tag, LearningIcon);
