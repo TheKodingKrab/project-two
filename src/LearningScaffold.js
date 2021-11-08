@@ -24,12 +24,6 @@ export class LearningScaffold extends LitElement {
     });
   }
 
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-  }
-
   static get styles() {
     return css`
       :host {
@@ -51,3 +45,4 @@ export class LearningScaffold extends LitElement {
     `;
   }
 }
+customElements.define(LearningScaffold.tag, LearningScaffold);

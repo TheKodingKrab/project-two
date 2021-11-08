@@ -85,3 +85,4 @@ export class LearningCardBanner extends SimpleColors {
     `;
   }
 }
+customElements.define(LearningCardBanner.tag, LearningCardBanner);
